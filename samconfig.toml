@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "cognitoUserMigration"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1mz0dofrt6ywa"
+s3_prefix = "cognitoUserMigration"
+region = "us-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+

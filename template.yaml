@@ -1,0 +1,40 @@
+# Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Amazon Cognito User Pool with User Migration Lambda
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: amazon-cognito-user-migration
+    Description: >
+      An Amazon Cognito user pool with AWS Lambda triggers to migrate User
+    Author: shazi7804
+    SpdxLicenseId: MIT-0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ["cognito", "user", "migrate", "sample"]
+    HomepageUrl: https://github.com/shazi7804/amazon-cognito-user-migration/tree/master/
+    SemanticVersion: 1.0.0
+    SourceCodeUrl: https://github.com/shazi7804/amazon-cognito-user-migration/tree/master/
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  cognitoUserMigrationLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-triggers/user-migration/
+      Handler: user-migration-authentication.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          clientId: adSzJDQbu3WSZiV1ZpCisoZw
+          clientSecret: ILfC0utk2SGU6fZ6ygFiKT2Io7NNAGrQnMInu0dPecPJy0jq
+          scope: profile
+          tokenEndpoint: "http://ec2-34-217-20-189.us-west-2.compute.amazonaws.com/oauth/token"
+          profileEndpoint: "http://ec2-34-217-20-189.us-west-2.compute.amazonaws.com/api/user"
