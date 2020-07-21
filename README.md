@@ -54,3 +54,7 @@ sam build && sam local invoke \
         ParameterKey=profileEndpoint, ParameterValue=http://.../api/user \
     -e events/authentication.json
 ```
+
+## Author
+
+@shazi7804
