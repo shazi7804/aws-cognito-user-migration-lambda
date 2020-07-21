@@ -2,19 +2,13 @@ from authlib.integrations.requests_client import OAuth2Session
 from os import getenv
 
 # # OAuth
-# client_id = 'adSzJDQbu3WSZiV1ZpCisoZw'
 client_id = getenv('clientId')
 client_secret = getenv('clientSecret')
 scope = getenv('scope')
 token_endpoint = getenv('tokenEndpoint')
+
+# Resource
 profile_endpoint = getenv('profileEndpoint')
-# client_secret = 'ILfC0utk2SGU6fZ6ygFiKT2Io7NNAGrQnMInu0dPecPJy0jq'
-# scope = 'profile'
-
-# token_endpoint = 'http://ec2-34-217-20-189.us-west-2.compute.amazonaws.com/oauth/token'
-
-# # Resource
-# profile_endpoint = 'http://ec2-34-217-20-189.us-west-2.compute.amazonaws.com/api/user'
 
 def authenticateUser(username):
 
