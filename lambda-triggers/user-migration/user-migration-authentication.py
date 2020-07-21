@@ -23,12 +23,9 @@ def authenticateUser(username):
     if username in profile['email']:
         status = 'true'
 
-    print(status)
-
     return status
 
 def lambda_handler(event, context):
-
     if ( event['triggerSource'] == 'UserMigration_Authentication' ):
 
         # authenticate the user with your existing user directory service
