@@ -46,6 +46,7 @@ def lambda_handler(event, context):
 
         # lookup the user in your existing user directory service
         user_status = authenticateUser(event['userName'])
+
         if ( user_status == 'true' ):
             event['response']['userAttributes'] = {
                 "email": event['userName'],
