@@ -22,12 +22,6 @@ def authenticateUser(username, password):
     user = username.split("@")[0]
     email = username
 
-    print('profile: ', profile)
-    print('user: ', user)
-    print('email: ', email)
-    print("profile[user]['email']: ", profile[user]['email'])
-    print("profile[user]['password']: ", profile[user]['password'])
-
     status = ''
     if ( email in profile[user]['email'] and password == profile[user]['password'] ):
         status = 'true'
