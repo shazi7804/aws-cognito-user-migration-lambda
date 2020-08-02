@@ -29,10 +29,11 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambda-triggers/user-migration/
-      Handler: user-migration-authentication.lambda_handler
+      Handler: user-migration-client_credentials.lambda_handler
       Runtime: python3.7
       Environment:
         Variables:
+          # From local invoke test key
           clientId: adSzJDQbu3WSZiV1ZpCisoZw
           clientSecret: ILfC0utk2SGU6fZ6ygFiKT2Io7NNAGrQnMInu0dPecPJy0jq
           scope: profile

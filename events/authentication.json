@@ -1,6 +1,9 @@
 {
-    "userName": "scottlwk@amazon.com",
+    "userName": "root@example.com",
     "triggerSource": "UserMigration_Authentication",
+    "request": {
+        "password": "1qaz2wsx"
+    },
     "response": {
         "userAttributes": {},
         "finalUserStatus": "",

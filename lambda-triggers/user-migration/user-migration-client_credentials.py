@@ -10,7 +10,7 @@ token_endpoint = getenv('tokenEndpoint')
 # Resource
 profile_endpoint = getenv('profileEndpoint')
 
-def authenticateUser(username):
+def authenticateUser(username, password):
 
     # OAuth2 client_credentials grant type
     client = OAuth2Session(client_id, client_secret, scope=scope, token_endpoint_auth_method='client_secret_basic')
@@ -19,8 +19,17 @@ def authenticateUser(username):
     # Get user_profile from resource server
     profile = client.get(profile_endpoint).json()
 
+    user = username.split("@")[0]
+    email = username
+
+    print('profile: ', profile)
+    print('user: ', user)
+    print('email: ', email)
+    print("profile[user]['email']: ", profile[user]['email'])
+    print("profile[user]['password']: ", profile[user]['password'])
+
     status = ''
-    if username in profile['email']:
+    if ( email in profile[user]['email'] and password == profile[user]['password'] ):
         status = 'true'
 
     return status
@@ -29,7 +38,7 @@ def lambda_handler(event, context):
     if ( event['triggerSource'] == 'UserMigration_Authentication' ):
 
         # authenticate the user with your existing user directory service
-        user_status = authenticateUser(event['userName'])
+        user_status = authenticateUser(event['userName'], event['request']['password'])
 
         if ( user_status == 'true' ):
             event['response']['userAttributes'] = {
