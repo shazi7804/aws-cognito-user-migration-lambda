@@ -19,6 +19,12 @@ def authenticateUser(username, password):
     # Get user_profile from resource server
     profile = client.get(profile_endpoint).json()
 
+    # Data of example
+    #    { "user": { "email": "user@example.com",
+    #                "password": "1234qwer" },
+    #      "root": { "email": "root@example.com",
+    #                "password": "1qaz2wsx" } }
+
     user = username.split("@")[0]
     email = username
 
